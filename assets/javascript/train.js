@@ -52,7 +52,7 @@ trainData.on("child_added", function(childSnapshot, prevChildKey){
 	console.log(trainFreq);
 
 
-	$("#trainloyeeTable > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDest + "</td><td>" + trainFreq + "</td><td>" + "xxxxxxx" + "</td><td>" + "Xxxxxx" + "</td></tr>");
+	$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDest + "</td><td>" + trainFreq + "</td><td>" + "xxxxxxx" + "</td><td>" + "Xxxxxx" + "</td></tr>");
 
 });
 
