@@ -11,7 +11,7 @@ $("#addTrainBtn").on("click", function(){
 		name:  trainName,
 		role: trainRole,
 		start: trainStart,
-		rate: trainRate
+		rate: trainFreq
 	}
 
 	trainData.push(newTrain);
