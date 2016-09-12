@@ -1,14 +1,12 @@
 var trainData = new Firebase("https://train-887cf.firebaseio.com");
 
 $("#addTrainBtn").on("click", function(){
-
 	// Grabs user input
 	var trainName = $("#trainNameInput").val().trim();
 	var trainDest = $("#destInput").val().trim();
-	var trainStart = moment($("#startInput").val().trim(), "DD/MM/YY").format("X");
-	var trainRate = $("#freqInput").val().trim();
+	var trainStart = moment($("#startInput").val().trim(), "HHmm").format("X");
+	var trainFreq = $("#freqInput").val().trim();
 
-	// Creates local "temporary" object for holding employee data
 	var newTrain = {
 		name:  trainName,
 		role: trainRole,
@@ -16,8 +14,7 @@ $("#addTrainBtn").on("click", function(){
 		rate: trainRate
 	}
 
-	// Uploads employee data to the database
-	employeeData.push(newTrain);
+	trainData.push(newTrain);
 
 	console.log(newTrain.name);
 	console.log(newTrain.role); 
@@ -32,3 +29,7 @@ $("#addTrainBtn").on("click", function(){
 	$("#destInput").val("");
 	$("#startInput").val("");
 	$("#freqInput").val("");
+
+	return false;
+});
+
