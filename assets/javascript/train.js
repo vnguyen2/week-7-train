@@ -69,7 +69,7 @@ trainData.on("child_added", function(childSnapshot, prevChildKey){
 
 		// Next Train
 		var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-		var nextArrival = moment(nextTrain).format("HH:mm");
+		var nextArrival = moment(nextTrain).format("hh:mm");
 		console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
 	console.log(trainName);
