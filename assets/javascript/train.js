@@ -4,7 +4,7 @@ $("#addTrainBtn").on("click", function(){
 	// Grabs user input
 	var trainName = $("#trainNameInput").val().trim();
 	var trainDest = $("#destInput").val().trim();
-	var trainStart = moment($("#startInput").val().trim()).format("hh:mm A")
+	var trainStart = moment($("#startInput").val().trim()).format("hh:mm")
 	var trainFreq = $("#freqInput").val().trim();
 
 	console.log($("#startInput").val().trim());
@@ -21,7 +21,7 @@ $("#addTrainBtn").on("click", function(){
 	trainData.push(newTrain);
 
 	console.log(newTrain.name);
-	console.log(newTrain.dest); 
+	console.log(newTrain.dest);
 	console.log(newTrain.start);
 	console.log(newTrain.freq)
 
@@ -68,7 +68,7 @@ trainData.on("child_added", function(childSnapshot, prevChildKey){
 
 		// Next Train
 		var nextTrain = moment().add(tMinutesTillTrain, "minutes")
-		var nextArrival = moment.unix(nextTrain).format("HH:mm")
+		var nextArrival = moment(nextTrain).format("HH:mm")
 		console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"))
 
 	console.log(trainName);
@@ -80,4 +80,3 @@ trainData.on("child_added", function(childSnapshot, prevChildKey){
 	$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDest + "</td><td>" + trainFreq + "</td><td>" + nextArrival + "</td><td>" + tMinutesTillTrain + "</td></tr>");
 
 });
-
