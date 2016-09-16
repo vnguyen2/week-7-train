@@ -1,10 +1,11 @@
 var trainData = new Firebase("https://train-887cf.firebaseio.com");
 
+
 $("#addTrainBtn").on("click", function(){
 	// Grabs user input
 	var trainName = $("#trainNameInput").val().trim();
 	var trainDest = $("#destInput").val().trim();
-	var trainStart = moment($("#startInput").val().trim()).format("hh:mm")
+	var trainStart = $("#startInput").val().trim();
 	var trainFreq = $("#freqInput").val().trim();
 
 	console.log($("#startInput").val().trim());
@@ -23,7 +24,7 @@ $("#addTrainBtn").on("click", function(){
 	console.log(newTrain.name);
 	console.log(newTrain.dest);
 	console.log(newTrain.start);
-	console.log(newTrain.freq)
+	console.log(newTrain.freq);
 
 	alert("Train successfully added");
 
@@ -47,7 +48,7 @@ trainData.on("child_added", function(childSnapshot, prevChildKey){
 	var trainFreq = childSnapshot.val().freq;
 
 		// First Time (pushed back 1 year to make sure it comes before current time)
-		var firstTimeConverted = moment(trainStart,"hh:mm").subtract(1, "years");
+		var firstTimeConverted = moment(trainStart,"HH:mm").subtract(1, "years");
 		console.log(firstTimeConverted);
 
 		// Current Time
@@ -67,16 +68,16 @@ trainData.on("child_added", function(childSnapshot, prevChildKey){
 		console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
 		// Next Train
-		var nextTrain = moment().add(tMinutesTillTrain, "minutes")
-		var nextArrival = moment(nextTrain).format("HH:mm")
-		console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"))
+		var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+		var nextArrival = moment(nextTrain).format("HH:mm");
+		console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
 	console.log(trainName);
 	console.log(trainDest);
 	console.log(trainStart);
 	console.log(trainFreq);
 
-
+	$("#time").html("Current Time: " + currentTime.format("hh:mm"));
 	$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDest + "</td><td>" + trainFreq + "</td><td>" + nextArrival + "</td><td>" + tMinutesTillTrain + "</td></tr>");
 
 });
